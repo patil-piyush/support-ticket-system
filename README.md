@@ -53,7 +53,6 @@ Required:
 
 ```
 GOOGLE_API_KEY=your_api_key_here
-
 ```
 
 API key is **never hardcoded**.
