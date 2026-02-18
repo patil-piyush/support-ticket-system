@@ -1,0 +1,180 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Typography System */
+  body {
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background-color: #f4f6f9;
+    color: #1e293b;
+    line-height: 1.6;
+  }
+  
+  /* Layout */
+  
+  .app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 260px;
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+  
+  .nav-link {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #94a3b8;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .nav-link:hover {
+    background: #1e293b;
+    color: #ffffff;
+  }
+  
+  .nav-link.active {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    background: white;
+    padding: 20px 40px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .page-container {
+    padding: 40px;
+    overflow-y: auto;
+  }
+  
+  /* Cards */
+  
+  .card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  }
+  
+  /* Grid */
+  
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  /* Form */
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #475569;
+  }
+  
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+  
+  /* Button */
+  
+  .btn-primary {
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background: #1d4ed8;
+  }
+  
+  /* Ticket Card */
+  
+  .ticket-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    transition: transform 0.2s ease;
+  }
+  
+  .ticket-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Badges */
+  
+  .badge {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  
+  .badge-blue {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+  
+  .badge-red {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+  
