@@ -5,6 +5,7 @@ from django.db.models import Q
 from .models import Ticket
 from .serializers import TicketSerializer
 from .selectors import get_ticket_stats
+from tickets.services.llm_service import classify_ticket
 
 
 
@@ -56,3 +57,22 @@ class TicketStatsView(APIView):
     def get(self, request):
         stats = get_ticket_stats()
         return Response(stats)
+
+
+
+# classify ticket
+class TicketClassifyView(APIView):
+
+    def post(self, request):
+
+        description = request.data.get("description")
+
+        if not description:
+            return Response(
+                {"error": "Description is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        result = classify_ticket(description)
+
+        return Response(result, status=status.HTTP_200_OK)

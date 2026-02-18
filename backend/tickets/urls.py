@@ -3,10 +3,13 @@ from .views import (
     TicketListCreateView,
     TicketUpdateView,
     TicketStatsView,
+    TicketClassifyView,
 )
 
 urlpatterns = [
     path("tickets/", TicketListCreateView.as_view(), name="ticket-list-create"),
     path("tickets/<int:pk>/", TicketUpdateView.as_view(), name="ticket-update"),
     path("tickets/stats/", TicketStatsView.as_view(), name="ticket-stats"),
+    path("tickets/classify/", TicketClassifyView.as_view(), name="ticket-classify"),
 ]
+
