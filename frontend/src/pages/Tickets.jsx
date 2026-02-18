@@ -33,7 +33,7 @@ const Tickets = () => {
           <div key={ticket.id} className="ticket-card">
             <h4>{ticket.title}</h4>
             <p style={{ margin: "10px 0", color: "#64748b" }}>
-              {ticket.description.substring(0, 120)}...
+              {ticket.description?.substring(0, 120)}...
             </p>
 
             <div style={{ display: "flex", gap: "10px" }}>

@@ -3,7 +3,14 @@ import axiosInstance from "./axiosInstance";
 // Get all tickets
 export const fetchTickets = async (params = {}) => {
   const response = await axiosInstance.get("/tickets/", { params });
-  return response.data;
+
+  const data = response.data;
+
+  // Handle paginated response
+  if (Array.isArray(data)) return data;
+  if (Array.isArray(data.results)) return data.results;
+
+  return [];
 };
 
 // Create ticket
