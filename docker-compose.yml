@@ -1,0 +1,34 @@
+
+services:
+  db:
+    image: postgres:15
+    container_name: support_db
+    restart: always
+    environment:
+      POSTGRES_DB: support_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    restart: always
+    container_name: support_backend
+    command: /app/entrypoint.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      POSTGRES_DB: support_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+
+volumes:
+  postgres_data:
