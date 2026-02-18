@@ -30,5 +30,16 @@ services:
       POSTGRES_PORT: 5432
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
 
+  frontend:
+      build: ./frontend
+      container_name: ticket_frontend
+      ports:
+        - "5173:80"
+      depends_on:
+        - backend
+      command: >
+        sh -c "echo 'Frontend running on http://localhost:5173' &&
+           nginx -g 'daemon off;'"
+
 volumes:
   postgres_data:

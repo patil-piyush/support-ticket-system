@@ -55,10 +55,6 @@ Ticket description:
             contents=prompt,
         )
 
-        print("RAW GEMINI RESPONSE:")
-        print(response.text)
-
-
         content = response.text.strip()
 
         json_string = extract_json(content)
