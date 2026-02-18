@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { createTicket, classifyTicket } from "../api/ticketsApi";
+import { useContext } from "react";
+import { TicketContext } from "../context/TicketContext";
 import { useNavigate } from "react-router-dom";
+
 
 const NewTicket = () => {
   const navigate = useNavigate();
@@ -15,6 +18,8 @@ const NewTicket = () => {
   const [classifyLoading, setClassifyLoading] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
   const [classifyError, setClassifyError] = useState(null);
+  const { triggerRefresh } = useContext(TicketContext);
+
 
   // Debounce classification
   useEffect(() => {
@@ -55,6 +60,7 @@ const NewTicket = () => {
     try {
       setSubmitLoading(true);
       await createTicket(formData);
+      triggerRefresh();
       navigate("/tickets");
     } catch (error) {
       alert("Failed to create ticket.");

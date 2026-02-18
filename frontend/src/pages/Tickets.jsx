@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { fetchTickets, updateTicket } from "../api/ticketsApi";
+import { useContext } from "react";
+import { TicketContext } from "../context/TicketContext";
 
 const Tickets = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { triggerRefresh } = useContext(TicketContext);
 
   const [filters, setFilters] = useState({
     category: "",
@@ -46,6 +49,7 @@ const Tickets = () => {
   const handleStatusChange = async (id, newStatus) => {
     try {
       await updateTicket(id, { status: newStatus });
+      triggerRefresh();
 
       // Refresh tickets
       const data = await fetchTickets(filters);
