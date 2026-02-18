@@ -1,13 +1,15 @@
-from django.shortcuts import render
-
-from rest_framework import generics, views, status
+from rest_framework import generics, status
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db.models import Q
 from .models import Ticket
 from .serializers import TicketSerializer
+from .selectors import get_ticket_stats
 
 
 
+
+# Create and list ticket
 class TicketListCreateView(generics.ListCreateAPIView):
     serializer_class = TicketSerializer
     queryset = Ticket.objects.all()
@@ -40,8 +42,17 @@ class TicketListCreateView(generics.ListCreateAPIView):
 
 
 
-
+# Update Ticket
 class TicketUpdateView(generics.UpdateAPIView):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
     http_method_names = ["patch"]
+
+
+
+# ticket stats
+class TicketStatsView(APIView):
+
+    def get(self, request):
+        stats = get_ticket_stats()
+        return Response(stats)
